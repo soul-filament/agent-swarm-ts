@@ -1,0 +1,17 @@
+{
+  "name": "calculator_app_advanced",
+  "description": "An enhanced calculator app that can evaluate a single string expression containing basic arithmetic operations.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "expression": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "expression"
+    ]
+  },
+  "handler": "exports.handler = async ({ expression }) => {\n  try {\n    const result = eval(expression);\n    return { result };\n  } catch (error) {\n    throw new Error('Invalid expression or calculation error');\n  }\n};",
+  "dependencies": ""
+}

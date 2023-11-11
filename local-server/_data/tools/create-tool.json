@@ -1,0 +1,30 @@
+{
+    "name": "create-tool",
+    "description": "A tool for the agent to create a new tool for itself to use later on",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "name": {
+                "type": "string",
+                "description": "The name of the tool to create"
+            },
+            "description": {
+                "type": "string",
+                "description": "A description of the tool to create"
+            },
+            "parameters": {
+                "type": "string",
+                "description": "The parameters of the tool to create, represented as a stringified JSON Schema object"
+            },
+            "handler": {
+                "type": "string",
+                "description": "A single file javascript lambda function that will be invoked to handle the tool. The function is expected to export a handler function which accepts one parameter which is the tool invocation object as defined in parameters. The function is expected to return some sort of result object which could be as simple as an empty object, or as complex as needed. This handler will be run on a nodejs 18 runtime on the same computer as the user. This is the final code so never include placeholders or abstracted sections."
+            },
+            "dependencies": {
+                "type": "string",
+                "description": "The dependencies needed to run the above handler. These are package names that will be installed via npm before the handler is run. Provide them as a list of space separated strings"
+            }
+        },
+        "required": ["name", "description", "parameters", "handler", "dependencies"]
+    }
+}
